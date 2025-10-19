@@ -1,9 +1,67 @@
+<!DOCTYPE html>
 <html>
-<body style="background: black; color: white; text-align: center; padding: 50px; font-family: Tahoma;">
-<h1>🔮 مکاشفه با میعاد</h1>
-<p>برنامه با موفقیت اجرا شد! ✅</p>
-<button onclick="alert('سلام! برنامه کار می‌کند')" style="padding: 15px; background: green; color: white; border: none; border-radius: 10px; font-size: 18px;">
-تست برنامه
-</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مکاشفه با میعاد</title>
+    <style>
+        body { background: #0f172a; color: white; font-family: Tahoma; padding: 20px; }
+        .card { background: #1e293b; padding: 20px; border-radius: 15px; margin: 10px; text-align: center; }
+        button { background: #22c55e; color: black; padding: 15px; border: none; border-radius: 10px; width: 100%; font-size: 18px; margin: 10px; }
+        .tab { padding: 10px; background: #334155; margin: 5px; border-radius: 8px; text-align: center; cursor: pointer; }
+        .tab.active { background: #22c55e; color: black; font-weight: bold; }
+        .content { display: none; }
+        .content.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔮 مکاشفه با میعاد</h1>
+        <p>استاد میعاد جابری‌پور • ۸ فصل کامل</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0;">
+        <div class="tab active" onclick="showTab(1)">دلیل الحیران</div>
+        <div class="tab" onclick="showTab(2)">طالع اسم</div>
+        <div class="tab" onclick="showTab(3)">۴۶ سوال</div>
+        <div class="tab" onclick="showTab(4)">دفترچه ذخیره</div>
+        <div class="tab" onclick="showTab(5)">کشف المريض</div>
+        <div class="tab" onclick="showTab(6)">حساب النجم</div>
+        <div class="tab" onclick="showTab(7)">فصل ۷</div>
+        <div class="tab" onclick="showTab(8)">فصل ۸</div>
+    </div>
+
+    <div class="content active" id="tab1">
+        <div class="card">
+            <h3>دلیل الحیران</h3>
+            <input type="text" placeholder="نام کامل" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: white;">
+            <button onclick="alert('طالع شما عالی است!')">محاسبه طالع</button>
+        </div>
+    </div>
+
+    <div class="content" id="tab2">
+        <div class="card">
+            <h3>طالع اسم</h3>
+            <button onclick="alert('طالع اسم شما خوب است!')">محاسبه طالع اسم</button>
+        </div>
+    </div>
+
+    <!-- تب‌های ۳ تا ۸ رو هم به همین شکل ساده بساز -->
+
+    <script>
+        function showTab(tabNumber) {
+            // مخفی کردن همه تب‌ها
+            document.querySelectorAll('.content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // نمایش تب انتخاب شده
+            document.getElementById('tab' + tabNumber).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
