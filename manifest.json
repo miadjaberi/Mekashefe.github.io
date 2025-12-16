@@ -1,0 +1,26 @@
+{
+  "name": "کافه سرکتاب میعاد",
+  "short_name": "سرکتاب میعاد",
+  "description": "طالع‌بینی و علوم غریبه - کاری از استاد میعاد جابری‌پور",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e2a3a",
+  "theme_color": "#ffcc00",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["lifestyle", "entertainment"],
+  "lang": "fa",
+  "dir": "rtl"
+}

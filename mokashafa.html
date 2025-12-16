@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مکاشفه ۱۶</title>
+    <style>
+        /* استایل ساده برای موبایل */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tahoma', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin: 20px 0 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .fortune-btn {
+            background: linear-gradient(45deg, #FF416C, #FF4B2B);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            width: 90%;
+            max-width: 300px;
+            box-shadow: 0 6px 20px rgba(255, 65, 108, 0.6);
+            transition: transform 0.2s;
+        }
+        
+        .fortune-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .result-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: right;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+        }
+        
+        .house-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .house-number {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        
+        .house-name {
+            font-size: 1.5rem;
+            color: #82E0AA;
+            margin-bottom: 5px;
+        }
+        
+        .result-section {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .section-title {
+            color: #F7DC6F;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .section-content {
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .ref-note {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-size: 0.85rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- هدر -->
+        <div class="house-header">
+            <h1>🎲 مکاشفه ۱۶</h1>
+            <p class="subtitle">قرعه رمل - شیخ بوعذار مغربی</p>
+        </div>
+        
+        <!-- دکمه فال -->
+        <button class="fortune-btn" onclick="getMokashafaFortune()">
+            🌀 دریافت قرعه مکاشفه
+        </button>
+        
+        <!-- جای نتیجه -->
+        <div id="resultContainer" class="result-box">
+            <!-- نتیجه اینجا نمایش داده می‌شود -->
+        </div>
+        
+        <!-- یادداشت منابع -->
+        <div class="ref-note">
+            <p><strong>منبع:</strong> کتاب "مفتاح الأسرار" - شیخ بوعذار مغربی</p>
+            <p>این مطالب جنبه تاریخی و آموزشی دارد.</p>
+        </div>
+        
+        <!-- دکمه برگشت -->
+        <a href="index.html" class="back-btn">🏠 بازگشت به صفحه اصلی</a>
+    </div>
+    
+    <!-- اتصال به فایل داده‌ها -->
+    <script src="data-mokashafa16.js"></script>
+    
+    <script>
+        // تابع گرفتن فال مکاشفه
+        function getMokashafaFortune() {
+            // فقط خونه‌های ۲، ۳، ۴ (همون مورد نظرت)
+            const houseNumbers = [2, 3, 4];
+            const randomIndex = Math.floor(Math.random() * houseNumbers.length);
+            const houseNumber = houseNumbers[randomIndex];
+            
+            // گرفتن اطلاعات از فایل داده‌ها
+            const houseData = getMokashafaData(houseNumber);
+            
+            // نمایش نتیجه
+            showFortuneResult(houseData);
+        }
+        
+        // تابع نمایش نتیجه
+        function showFortuneResult(data) {
+            const container = document.getElementById('resultContainer');
+            
+            // ساخت محتوای نتیجه
+            container.innerHTML = `
+                <div class="house-header">
+                    <div class="house-number">🏠 ${data.number}</div>
+                    <div class="house-name">${data.persianName}</div>
+                    <p style="color: #A3E4D7;">${data.name}</p>
+                </div>
+                
+                <div class="result-section">
+                    <div class="section-title">⭐ نتیجه کوتاه</div>
+                    <div class="section-content">${data.shortResult}</div>
+                </div>
+                
+                <div class="result-section">
+                    <div class="section-title">📋 خلاصه</div>
+                    <div class="section-content">${data.summary}</div>
+                </div>
+                
+                <div class="result-section">
+                    <div class="section-title">💫 تفسیر کلی</div>
+                    <div class="section-content">${data.conclusion}</div>
+                </div>
+                
+                <div class="result-section">
+                    <div class="section-title">📖 متن کامل</div>
+                    <div class="section-content" style="font-size: 0.9rem; line-height: 1.7;">${data.persianText}</div>
+                </div>
+                
+                <button onclick="getMokashafaFortune()" style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 12px 25px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    margin-top: 20px;
+                    width: 100%;
+                ">
+                    🔄 قرعه جدید
+                </button>
+            `;
+            
+            // نمایش کانتینر نتیجه
+            container.style.display = 'block';
+            
+            // اسکرول به نتیجه
+            container.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // پیام بارگذاری موفق
+        console.log('✅ صفحه مکاشفه ۱۶ آماده است!');
+    </script>
+</body>
+</html>
